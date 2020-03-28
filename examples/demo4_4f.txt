@@ -1,0 +1,77 @@
+(
+ ( !req_0 && !req_1 && !req_2 && !req_3 )
+) -> (
+ ( !open_0 )
+ &&
+ ( stop0 )
+ &&
+ ( G(req_0 -> F(((((lft0_0 && open_0)))))) && G(req_1 -> F(((((lft0_1 && open_0)))))) && G(req_2 -> F(((((lft0_2 && open_0)))))) && G(req_3 -> F(((((lft0_3 && open_0)))))) )
+ &&
+ ( (G(lft0_0 <-> !(lft0_1 || lft0_2 || lft0_3)) && G(lft0_1 <-> !(lft0_0 || lft0_2 || lft0_3)) && G(lft0_2 <-> !(lft0_0 || lft0_1 || lft0_3)) && G(lft0_3 <-> !(lft0_0 || lft0_1 || lft0_2))) )
+ &&
+ ( (G(stop0 <-> !(up0 || down0)) && G(up0 <-> !(stop0 || down0)) && G(down0 <-> !(stop0 || up0))) )
+ &&
+ ( G(up0 -> X(stop0 || up0)) && G(down0 -> X(stop0 || down0)) )
+ &&
+ ( G(lft0_0 -> (stop0 || up0)) )
+ &&
+ ( G(lft0_3 -> (stop0 || down0)) )
+ &&
+ ( G((lft0_0 && stop0) -> X(lft0_0)) )
+ &&
+ ( G((lft0_1 && stop0) -> X(lft0_1)) )
+ &&
+ ( G((lft0_2 && stop0) -> X(lft0_2)) )
+ &&
+ ( G((lft0_3 && stop0) -> X(lft0_3)) )
+ &&
+ ( G((lft0_0 && up0) -> X(lft0_1)) )
+ &&
+ ( G((lft0_1 && up0) -> X(lft0_2)) )
+ &&
+ ( G((lft0_2 && up0) -> X(lft0_3)) )
+ &&
+ ( G((lft0_1 && down0) -> X(lft0_0)) )
+ &&
+ ( G((lft0_2 && down0) -> X(lft0_1)) )
+ &&
+ ( G((lft0_3 && down0) -> X(lft0_2)) )
+ &&
+ ( G(X(open_0) -> (stop0 && X(stop0))) )
+ &&
+ ( G(open_0 -> stop0) )
+ &&
+ ( G((!((lft0_0 && open_0)) && !go_0 && req_0) -> X(((lft0_0 && open_0)) R go_0)) )
+ &&
+ ( G((((lft0_0 && open_0)) && !req_0) -> X(!go_0)) )
+ &&
+ ( G((!go_0 && X(go_0)) -> X(req_0)) )
+ &&
+ ( G((!go_0 && X(!!go_0)) -> X((((X(((lft0_0 && open_0))))) R !!go_0))) )
+ &&
+ ( G((!((lft0_1 && open_0)) && !go_1 && req_1) -> X(((lft0_1 && open_0)) R go_1)) )
+ &&
+ ( G((((lft0_1 && open_0)) && !req_1) -> X(!go_1)) )
+ &&
+ ( G((!go_1 && X(go_1)) -> X(req_1)) )
+ &&
+ ( G((!go_1 && X(!!go_1)) -> X((((X(((lft0_1 && open_0))))) R !!go_1))) )
+ &&
+ ( G((!((lft0_2 && open_0)) && !go_2 && req_2) -> X(((lft0_2 && open_0)) R go_2)) )
+ &&
+ ( G((((lft0_2 && open_0)) && !req_2) -> X(!go_2)) )
+ &&
+ ( G((!go_2 && X(go_2)) -> X(req_2)) )
+ &&
+ ( G((!go_2 && X(!!go_2)) -> X((((X(((lft0_2 && open_0))))) R !!go_2))) )
+ &&
+ ( G((!((lft0_3 && open_0)) && !go_3 && req_3) -> X(((lft0_3 && open_0)) R go_3)) )
+ &&
+ ( G((((lft0_3 && open_0)) && !req_3) -> X(!go_3)) )
+ &&
+ ( G((!go_3 && X(go_3)) -> X(req_3)) )
+ &&
+ ( G((!go_3 && X(!!go_3)) -> X((((X(((lft0_3 && open_0))))) R !!go_3))) )
+ &&
+ ( G(!(stop0) -> (go_0 || go_1 || go_2 || go_3)) )
+)
