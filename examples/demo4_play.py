@@ -1,5 +1,8 @@
 import collections
 import re
+import itertools
+import sys
+import time
 
 N = 4
 
@@ -55,27 +58,36 @@ def convert_input(x):
         ins_v.append(int(c))
     return ins_v
 
+def print_spinner():
+    print('\033[1A>', end="", flush=True)
+    for spinner in itertools.chain(*itertools.repeat(['|', '/', '-', '\\'], 10)):
+        time.sleep(0.008)
+        print(spinner + '\033[1D', end='', file=sys.stderr, flush=True)
+
 def play(graph):
     cur = 0
-    cnt = 0
-    while True:
-        cnt += 1
-        if cnt == 1:
+    inp = 1
+    for cnt in itertools.count():
+        first = cnt == 0
+        if first:
             ins_v = [0] * N
         else:
+            print(f"\033[{inp}B", end="", flush=True)
             x = input('>')
             ins_v = convert_input(x)
-            #if ins_v == [0] * N:
-            #    print("\033[1A",end="")
+            if sum(ins_v) == 0:
+                print_spinner()
+            else:
+                inp += 1
         for ins_cond, outs_signal, node_to in graph[cur]:
             if match(ins_cond, ins_v):
                 cur = node_to
-                viz2(outs_signal)
+                viz2(outs_signal, inp, first)
                 break
         else:
             print('Invalid input, your input break the assumption.', ins_v)
 
-def viz2(outs_signal):
+def viz2(outs_signal, inp, first):
     data = []
     states = {
         'no'    : '[{go}]|      |',
@@ -101,8 +113,10 @@ def viz2(outs_signal):
                     if m == 1 or m == -1:
                         data.append(states[n].format(go=go[i]))
                         break
+    if not first:
+        print(f"\033[{5+inp}A", end="", flush=True)
+    print('-----------' + '\n'  + '\n'.join(reversed(data)), flush=True)
 
-    print('-----------' + '\n'  + '\n'.join(reversed(data)) + "\033[4A",end="")
 
 if __name__ == '__main__':
     graph = load_dot('demo4_4f.dot')
