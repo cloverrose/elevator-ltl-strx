@@ -1,4 +1,4 @@
-# elevator-ltl
+# elevator-ltl-strx
 
 Generate 4F elevator automaton from LTL by using strix.
 
